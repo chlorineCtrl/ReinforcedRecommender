@@ -54,3 +54,12 @@ for t in range(NUM_USERS):
 
 reward_history = np.array(reward_history)
 arm_history = np.array(arm_history)
+
+estimated_means = agent.values
+top5 = np.argsort(estimated_means)[-5:][::-1]
+
+print("\n===== TOP 5 RECOMMENDATIONS =====")
+print(f"{'Rank':<6}{'Arm':<6}{'Est. Mean':>10}{'True q(a)':>10}{'Pulls':>8}")
+print("-" * 42)
+for rank, a in enumerate(top5, start=1):
+    print(f"{rank:<6}{a:<6}{estimated_means[a]:>+10.3f}{true_q[a]:>+10.3f}{int(agent.counts[a]):>8}")
