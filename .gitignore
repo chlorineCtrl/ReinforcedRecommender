@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.png
+.DS_Store
+
+# Ignored for now
+GEMINI.md
+gemini.md
+README.md
+readme.md
