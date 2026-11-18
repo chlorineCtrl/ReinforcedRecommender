@@ -63,3 +63,15 @@ print(f"{'Rank':<6}{'Arm':<6}{'Est. Mean':>10}{'True q(a)':>10}{'Pulls':>8}")
 print("-" * 42)
 for rank, a in enumerate(top5, start=1):
     print(f"{rank:<6}{a:<6}{estimated_means[a]:>+10.3f}{true_q[a]:>+10.3f}{int(agent.counts[a]):>8}")
+
+cumulative_avg = np.cumsum(reward_history) / np.arange(1, NUM_USERS + 1)
+
+plt.figure(figsize=(9, 4))
+plt.plot(cumulative_avg, linewidth=1.5)
+plt.xlabel("User interaction (t)")
+plt.ylabel("Cumulative average reward")
+plt.title("UCB1 — Cumulative Average Reward over 2,500 Users")
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig("plot_cumulative_reward.png", dpi=150)
+plt.show()
