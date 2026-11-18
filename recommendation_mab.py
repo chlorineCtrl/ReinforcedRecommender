@@ -91,3 +91,17 @@ plt.grid(True, axis="y", alpha=0.3)
 plt.tight_layout()
 plt.savefig("plot_true_vs_estimated.png", dpi=150)
 plt.show()
+
+arm_indices = np.arange(NUM_ARMS)
+colors = ["#2ecc71" if a in top5 else "#95a5a6" for a in arm_indices]
+
+plt.figure(figsize=(10, 5))
+plt.bar(arm_indices, agent.counts, color=colors)
+plt.xlabel("Arm index")
+plt.ylabel("Number of pulls")
+plt.title("Arm Selection Frequency (green = top 5)")
+plt.xticks(arm_indices)
+plt.grid(True, axis="y", alpha=0.3)
+plt.tight_layout()
+plt.savefig("plot_arm_pulls.png", dpi=150)
+plt.show()
