@@ -38,3 +38,19 @@ class UCB1:
         n = self.counts[arm]
         # Incremental sample average update
         self.values[arm] += (reward - self.values[arm]) / n
+
+
+agent = UCB1(NUM_ARMS)
+
+reward_history = []
+arm_history = []
+
+for t in range(NUM_USERS):
+    arm = agent.select_arm()
+    reward = np.random.normal(loc=true_q[arm], scale=1.0)
+    agent.update(arm, reward)
+    reward_history.append(reward)
+    arm_history.append(arm)
+
+reward_history = np.array(reward_history)
+arm_history = np.array(arm_history)
